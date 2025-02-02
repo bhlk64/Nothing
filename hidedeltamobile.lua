@@ -3,7 +3,7 @@ Title = "Close Delta Interface",
 Text = "Go in Help Tab to close interface"
 });
 
-local help = game:GetService("CoreGui").RobloxGui.SettingsClippingShield.SettingsShield.MenuContainer.PageViewClipper.PageView.PageViewInnerFrame:WaitForChild("Help").HelpFrameTouch
+local help = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("SettingsClippingShield"):WaitForChild("SettingsShield"):WaitForChild("MenuContainer"):WaitForChild("PageViewClipper"):WaitForChild("PageView"):WaitForChild("PageViewInnerFrame"):WaitForChild("Help"):WaitForChild("HelpFrameTouch")
 
 if help:FindFirstChild("TextButton") then
 help.TextButton:Destroy()
