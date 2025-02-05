@@ -39,11 +39,11 @@ end
 end
 
 if uis.TouchEnable and exec == "Delta" then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidedeltamobile.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidedeltamobile.lua"))()
 elseif uis.TouchEnable and exec == "Fluxus" then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidefluxusmobile.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidefluxusmobile.lua"))()
 elseif uis.KeyboardEnabled and exec == "Delta" then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidedelta.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidedelta.lua"))()
 elseif uis.KeyboardEnabled and exec == "Fluxus" then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidefluxus.lua")()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/hidefluxus.lua"))()
 end
