@@ -1,4 +1,4 @@
-staffwatch (Notify if a staff member of the game joins the server)local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/bhlk64/Nothing/refs/heads/main/InterfaceManager.lua"))()
 
@@ -1741,10 +1741,10 @@ local Keybind = Tabs.Misc:AddKeybind("KeyBHOP", {
         Default = "B",
         
         Callback = function(Bool)
-        BHop = Bool
+        BHopKey = Bool
 spawn(function()
 while true and wait(0.1) do
-if BHop and hum then
+if BHopKey and hum then
 hum.HipHeight = -0.75
 if hum.FloorMaterial ~= Enum.Material.Air then
 hum:ChangeState(Enum.HumanoidStateType.Jumping)
@@ -1770,7 +1770,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local UserInputService = game:GetService("UserInputService")
 
-local BHop = false
+local BHop2 = false
 
 local function createtoggle()
     local screenGui = Instance.new("ScreenGui")
@@ -1805,8 +1805,8 @@ local function createtoggle()
     toggleButton.Parent = frame
     
     toggleButton.MouseButton1Click:Connect(function()
-        BHop = not BHop
-        toggleButton.Text = BHop and "Auto Jump: ON" or "Auto Jump: OFF"
+        BHop2 = not BHop2
+        toggleButton.Text = BHop2 and "Auto Jump: ON" or "Auto Jump: OFF"
     end)
     
     MakeDraggable(toggleButton, frame)
@@ -1815,7 +1815,7 @@ end
 -- Auto-Jump
 spawn(function()
 while true and wait(0.1) do
-if BHop and hum then
+if BHop2 and hum then
 hum.HipHeight = -0.75
 if hum.FloorMaterial ~= Enum.Material.Air then
 hum:ChangeState(Enum.HumanoidStateType.Jumping)
