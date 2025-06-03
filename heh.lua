@@ -43,6 +43,15 @@ posto.Archivable = true
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
  
+ 
+spawn(function()
+while true do
+plr = game.Players.LocalPlayer
+chr = plr.Character or plr.CharacterAdded:Wait()
+hum = chr:WaitForChild("Humanoid")
+task.wait(0.01)
+end
+end)
 local function MakeDraggable(topbarobject, object)
     local Dragging = nil
     local DragInput = nil
@@ -177,7 +186,7 @@ print("Common Api")
 end
 
 local SizeGuiX = 580
-local SizeGuiZ = 460
+local SizeGuiZ = 400
 
 local Window = Fluent:CreateWindow({
     Title = "Unknown Hub X Evade (Overhaul)",
@@ -1732,16 +1741,20 @@ local Keybind = Tabs.Misc:AddKeybind("KeyBHOP", {
         Default = "B",
         
         Callback = function(Bool)
-        BHopKey = Bool
-          spawn(function()
-            while true and wait(0.1) do
-                if BHopKey then 
-                 setfflag("MaxAltitudePDStickHipHeightPercent", "-24")
-             else
-                 setfflag("MaxAltitudePDStickHipHeightPercent", "10")
-                end
-           end
-       end)
+        BHop = Bool
+spawn(function()
+while true and wait(0.1) do
+if BHop and hum then
+hum.HipHeight = -0.75
+if hum.FloorMaterial ~= Enum.Material.Air then
+hum:ChangeState(Enum.HumanoidStateType.Jumping)
+end
+else
+hum.HipHeight = -1.25
+end
+end
+end)
+--fixed
    end,
 
         ChangedCallback = function(New)
@@ -1757,7 +1770,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local UserInputService = game:GetService("UserInputService")
 
-local BHop2 = false
+local BHop = false
 
 local function createtoggle()
     local screenGui = Instance.new("ScreenGui")
@@ -1792,8 +1805,8 @@ local function createtoggle()
     toggleButton.Parent = frame
     
     toggleButton.MouseButton1Click:Connect(function()
-        BHop2 = not BHop2
-        toggleButton.Text = BHop2 and "Auto Jump: ON" or "Auto Jump: OFF"
+        BHop = not BHop
+        toggleButton.Text = BHop and "Auto Jump: ON" or "Auto Jump: OFF"
     end)
     
     MakeDraggable(toggleButton, frame)
@@ -1802,18 +1815,21 @@ end
 -- Auto-Jump
 spawn(function()
 while true and wait(0.1) do
-    if BHop2 then
-      setfflag("MaxAltitudePDStickHipHeightPercent", "-24")
-      else
-      setfflag("MaxAltitudePDStickHipHeightPercent", "10")
-       end
-    end
+if BHop and hum then
+hum.HipHeight = -0.75
+if hum.FloorMaterial ~= Enum.Material.Air then
+hum:ChangeState(Enum.HumanoidStateType.Jumping)
+end
+else
+hum.HipHeight = -1.25
+end
+end
 end)
-
+--fixed
 local Players = game:GetService("Players")
 
 local function onPlayerRemoving()
-setfflag("MaxAltitudePDStickHipHeightPercent", "10")
+game:GetService("Players").LocalPlayer.Character.Humanoid.HipHeight = -1.25
 end
 
 Players.PlayerRemoving:Connect(onPlayerRemoving)
